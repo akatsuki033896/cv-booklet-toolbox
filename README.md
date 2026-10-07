@@ -1,8 +1,24 @@
+**The toolbox's default settings is for 600-dpi.**
+
 ## Quick Start
 
+create environment by `env.yaml`
+
 ```sh
+conda env create -f env.yaml
 conda activate cv
-python main.py 扫描件.tif                        # 自动检测亮点（默认）
-python main.py 扫描件.tif --lpi 150 --angle 45   # 写死网线数/网角
-python main.py --selftest                        # 重新跑合成件自测
+```
+
+processing
+
+```sh
+python main.py scan.tif                          # notch 去网纹
+python main.py scan_descreen.tif --blur          # 高斯模糊
+python main.py scan_descreen_blur.tif --noise    # 蒙尘与划痕
+python main.py ..._blur_noise.tif --sharpen      # USM 锐化
+```
+## Examples
+
+```sh
+python main.py scan.tif -o out.tif --spectrum    # 指定输出路径, 保存频谱图
 ```
