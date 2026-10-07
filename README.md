@@ -12,6 +12,7 @@ conda activate cv
 processing
 
 ```sh
+python main.py scan.tif --all                    # 一条命令完成全部四步
 python main.py scan.tif                          # notch 去网纹
 python main.py scan_descreen.tif --blur          # 高斯模糊
 python main.py scan_descreen_blur.tif --noise    # 蒙尘与划痕
