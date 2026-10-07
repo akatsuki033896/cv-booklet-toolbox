@@ -25,6 +25,12 @@ python main.py scan_descreen_blur.tif --noise    # 蒙尘与划痕
 python main.py ..._blur_noise.tif --sharpen      # USM 锐化
 ```
 
+Output to existed path
+
+```sh
+python main.py scan.tif --all -o output/scan.tiff
+```
+
 View the spectrum
 
 ```sh
