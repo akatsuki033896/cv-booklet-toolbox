@@ -61,8 +61,11 @@ def save_image(path: Path, img01: np.ndarray, dtype, dpi: int) -> None:
         out = img01.astype(np.float32)
     if out.ndim == 3 and out.shape[-1] == 1:
         out = out[..., 0]
+    # 水平差分预测器只用于整数位深：16bit 连续调图像的 LZW 体积约减半，
+    # 且属于 TIFF 6.0 标准Predictor=2，读取端通用；浮点数据不启用。
+    predictor = dtype in (np.uint8, np.uint16) or None
     try:
         tifffile.imwrite(str(path), out, compression="lzw",
-                         resolution=(dpi, dpi))
+                         resolution=(dpi, dpi), predictor=predictor)
     except KeyError:  # 缺 imagecodecs 时退回无压缩
         tifffile.imwrite(str(path), out, resolution=(dpi, dpi))
