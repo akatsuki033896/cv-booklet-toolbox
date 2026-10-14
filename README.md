@@ -43,3 +43,10 @@ python batch_rename.py <path> --dry-run          # 预览: 批量删除文件名
 python batch_rename.py <目录>             # 实际执行
 python batch_rename.py <path> [-r]               # 执行重命名(-r 递归子目录), 目标已存在则跳过
 ```
+
+Split a multi-page TIFF
+
+```sh
+python tiff_split.py scan.tif                     # 按页切分为 bk01.tif, bk02.tif, ...（默认输出到源文件目录）
+python tiff_split.py scan.tif -o output/          # 指定输出目录, 目标已存在则跳过
+```
